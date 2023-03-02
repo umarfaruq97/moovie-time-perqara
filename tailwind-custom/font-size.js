@@ -21,6 +21,12 @@ module.exports.fontSize = {
     },
   ],
   header4: [
+    '28px',
+    {
+      lineHeight: '34px',
+    },
+  ],
+  header5: [
     '24px',
     {
       lineHeight: '140%',

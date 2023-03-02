@@ -5,10 +5,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import CategoryIcon from './Source/CategoryIcon.vue'
+import MovieIcon from './Source/MovieIcon.vue'
+import SearchIcon from './Source/SearchIcon.vue'
+import StarIcon from './Source/StarIcon.vue'
 export default Vue.extend({
   name: 'FontIcon',
   components: {
     CategoryIcon,
+    StarIcon,
+    MovieIcon,
+    SearchIcon,
   },
   props: {
     size: {

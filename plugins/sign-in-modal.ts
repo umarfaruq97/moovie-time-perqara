@@ -3,7 +3,7 @@ import { Plugin } from '@nuxt/types'
 export interface SignInModalArgs {
   show: boolean
   routeBack?: string | any
-  handleSignInResult?: () => void
+  handleSignInResult?: object | null
 }
 
 export type SignInModalAction = (args: SignInModalArgs) => void
@@ -36,25 +36,25 @@ const signInPlugin: Plugin = (context, inject) => {
     state: (): SignInModalArgs => ({
       show: false,
       routeBack: null,
-      handleSignInResult: () => {}
+      handleSignInResult: null,
     }),
     getters: {
       signInModalState(state: SignInModalArgs) {
         return { ...state }
-      }
+      },
     },
     mutations: {
       SET_SIGN_IN_MODAL: (state: SignInModalArgs, payload: SignInModalArgs) => {
         state.show = payload.show
         state.routeBack = payload.routeBack || null
-        state.handleSignInResult = payload.handleSignInResult || function () {}
-      }
+        state.handleSignInResult = payload.handleSignInResult
+      },
     },
     actions: {
       pushSignInModal({ commit }, payload: SignInModalArgs) {
         commit('SET_SIGN_IN_MODAL', payload)
-      }
-    }
+      },
+    },
   })
   inject('signInModal', (args: SignInModalArgs) => {
     context.store.dispatch('signInModal/pushSignInModal', args)

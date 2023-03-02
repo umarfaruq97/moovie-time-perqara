@@ -50,7 +50,7 @@ const movieList: MovieItem[] = [
     movie_title: 'Black Water: Abyss',
     movie_year: 2020,
     movie_rating: 5.1,
-    movie_thumbnail_url: '/6-black-water-abyss.png',
+    movie_thumbnail_url: '/5-black-water.png',
     movie_views: 1070,
     movie_genres: ['Action', 'Sci-Fi'],
     movie_overview:
@@ -141,7 +141,7 @@ const movieCarouselList: MovieItem[] = [
     movie_title: 'Space Sweepers',
     movie_year: 2021,
     movie_rating: 7.3,
-    movie_thumbnail_url: '/1-space-sweepers.png',
+    movie_thumbnail_url: '/1-carousel-space-sweepers.png',
     movie_views: 12400,
     movie_genres: ['Sci-Fi'],
     movie_overview: `When the crew of a space junk collector ship called The Victory discovers a humanoid robot named Dorothy that's known to be a weapon of mass destruction, they get involved in a risky business deal which puts their lives at stake.`,
@@ -165,6 +165,17 @@ const movieCarouselList: MovieItem[] = [
     movie_views: 12400,
     movie_genres: ['Drama'],
     movie_overview: `A Texan traveling across the wild West bringing the news of the world to local townspeople, agrees to help rescue a young girl who was kidnapped.`,
+  },
+  {
+    movie_id: '4',
+    movie_title: '100% Wolf',
+    movie_year: 2020,
+    movie_rating: 5.9,
+    movie_thumbnail_url: '/12-wolf.png',
+    movie_views: 1990,
+    movie_genres: ['Action', 'Sci-Fi'],
+    movie_overview:
+      'Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.',
   },
 ]
 

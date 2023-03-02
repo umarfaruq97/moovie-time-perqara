@@ -41,7 +41,11 @@ export default {
   css: ['@/assets/styles/tailwind.css', '@/assets/styles/reset.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '@/plugins/alert.ts',
+    '@/plugins/sign-in-modal.ts',
+    '@/plugins/loader.ts',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   // components: true,

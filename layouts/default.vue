@@ -1,7 +1,9 @@
 <template>
-  <div class="bg-dark-default min-h-screen">
+  <div class="bg-dark-default">
     <HeaderNavigation />
-    <Nuxt />
+    <div class="pt-20 pb-10 min-h-screen">
+      <Nuxt />
+    </div>
     <FooterNavigation />
   </div>
 </template>

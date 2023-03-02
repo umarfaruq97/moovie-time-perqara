@@ -1,8 +1,13 @@
 <template>
-  <div>Hello World</div>
+  <HomePage />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+import HomePage from '~/components/Containers/Home/HomePage.vue'
+export default Vue.extend({
+  components: {
+    HomePage,
+  },
+})
 </script>

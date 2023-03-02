@@ -28,7 +28,7 @@ module.exports.colors = {
   'yellow-03': '#FFE88B',
   'yellow-04': '#FFEFB2',
   'yellow-05': '#FFF7D8',
-  'red-00': '#D62020',
+  'red-00': '#FF0000',
   'red-01': '#E33030',
   'red-02': '#E95A5A',
   'red-03': '#EE8383',
@@ -49,4 +49,5 @@ module.exports.colors = {
   white: '#FFFFFF',
   'dark-default': '#1E232B',
   'dark-grey': '#929292',
+  'dark-orange': '#E74C3C',
 }

@@ -7,7 +7,7 @@ export interface AlertArgs {
   message?: string
   actionAlert?: boolean
   actionText?: string
-  action?: () => void
+  action?: object | null
   timer?: number
 }
 
@@ -49,13 +49,13 @@ const alertPlugin: Plugin = (context, inject) => {
       message: 'Proses sukses',
       actionAlert: false,
       actionText: '',
-      action: () => {},
-      timer: 0
+      action: null,
+      timer: 0,
     }),
     getters: {
       alertState(state: AlertArgs) {
         return { ...state }
-      }
+      },
     },
     mutations: {
       SET_ALERT: (state: AlertArgs, payload: AlertArgs) => {
@@ -65,15 +65,15 @@ const alertPlugin: Plugin = (context, inject) => {
         state.message = payload.message
         state.actionAlert = payload.actionAlert || false
         state.actionText = payload.actionText || ''
-        state.action = payload.action || function () {}
+        state.action = payload.action
         state.timer = payload.timer || 0
-      }
+      },
     },
     actions: {
       pushAlert: ({ commit }, payload: AlertArgs) => {
         commit('SET_ALERT', payload)
-      }
-    }
+      },
+    },
   })
   inject('alert', (args: AlertArgs) => {
     context.store.dispatch('alert/pushAlert', args)
