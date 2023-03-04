@@ -7,7 +7,7 @@ module.exports.fontSize = {
     },
   ],
   header2: [
-    '40px',
+    '36px',
     {
       lineHeight: '47px',
       letterSpacing: '-0.02em',

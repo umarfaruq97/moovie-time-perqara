@@ -68,7 +68,6 @@ const actions: ActionTree<MovieType, MovieType> = {
             data: staticFilterMovieDetail(data),
           })
         )
-        console.log(staticFilterMovieDetail(data))
       }
       return result
     } catch (error) {

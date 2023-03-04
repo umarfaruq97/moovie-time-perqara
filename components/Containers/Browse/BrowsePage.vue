@@ -28,7 +28,7 @@
       </div>
       <div class="w-4/5 grid grid-cols-4 grid-rows-3 gap-y-9 gap-x-6">
         <MovieCard
-          v-for="(movie, i) in movieList.data"
+          v-for="(movie, i) in movieListStatic.data"
           :key="i"
           :movie="movie"
         />
@@ -41,9 +41,10 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import MovieCard from '~/components/Elements/Card/MovieCard.vue'
-import { categories } from '~/utils/movie'
+import { categories, movieList } from '~/utils/movie'
 import SortingDropdown from '~/components/Elements/Dropdown/SortingDropdown.vue'
-import { MovieListRequest } from '~/types/movie'
+import { MovieItem, MovieListRequest } from '~/types/movie'
+import { APIStateType } from '~/types/fetching-api'
 export default Vue.extend({
   name: 'BrowsePage',
   components: {
@@ -62,6 +63,11 @@ export default Vue.extend({
         sort_by: '',
         order_by: 'asc',
       } as MovieListRequest,
+      movieListStatic: {
+        data: [...movieList],
+        isLoading: false,
+        status: 'SUCCESS',
+      } as APIStateType<MovieItem[]>,
     }
   },
   computed: {

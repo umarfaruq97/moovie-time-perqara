@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-transparent py-14 mb-12">
     <hooper :settings="settings">
-      <template v-for="(item, i) in movieCarouselList.data">
+      <template v-for="(item, i) in movieCarouselListStatic.data">
         <slide :key="i" class="flex items-center">
           <img
             :src="
@@ -44,6 +44,9 @@ import { mapGetters, mapActions } from 'vuex'
 import { Hooper, Slide, Pagination as HooperPagination } from 'hooper'
 import 'hooper/dist/hooper.css'
 import FontIcon from '../Icon/FontIcon.vue'
+import { APIStateType } from '~/types/fetching-api'
+import { MovieItem } from '~/types/movie'
+import { movieCarouselList } from '~/utils/movie'
 export default Vue.extend({
   name: 'CarouselMovie',
   components: {
@@ -69,6 +72,11 @@ export default Vue.extend({
         transition: 700,
         hoverPause: false,
       },
+      movieCarouselListStatic: {
+        data: [...movieCarouselList],
+        isLoading: false,
+        status: 'SUCCESS',
+      } as APIStateType<MovieItem[]>,
     }
   },
   computed: {

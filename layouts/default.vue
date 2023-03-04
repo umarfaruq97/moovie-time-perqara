@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark-default">
+  <div class="bg-dark-default relative">
     <HeaderNavigation />
     <div class="pt-20 pb-10 min-h-screen">
       <Nuxt />

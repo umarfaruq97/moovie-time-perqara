@@ -16,7 +16,11 @@
       </div>
     </div>
     <div class="grid grid-cols-4 grid-rows-3 gap-y-9 gap-x-6">
-      <MovieCard v-for="(movie, i) in movieList.data" :key="i" :movie="movie" />
+      <MovieCard
+        v-for="(movie, i) in movieListStatic.data"
+        :key="i"
+        :movie="movie"
+      />
     </div>
   </div>
 </template>
@@ -25,7 +29,9 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import MovieCard from '~/components/Elements/Card/MovieCard.vue'
-import { MovieListRequest } from '~/types/movie'
+import { APIStateType } from '~/types/fetching-api'
+import { MovieItem, MovieListRequest } from '~/types/movie'
+import { movieList } from '~/utils/movie'
 export default Vue.extend({
   name: 'MovieGrid',
   components: {
@@ -53,6 +59,11 @@ export default Vue.extend({
         sort_by: '',
         order_by: 'asc',
       } as MovieListRequest,
+      movieListStatic: {
+        data: [...movieList],
+        isLoading: false,
+        status: 'SUCCESS',
+      } as APIStateType<MovieItem[]>,
     }
   },
   computed: {

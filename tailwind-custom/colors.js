@@ -51,4 +51,5 @@ module.exports.colors = {
   'dark-grey': '#929292',
   'dark-orange': '#E74C3C',
   'light-black': '#2F363F',
+  'light-grey-02': '#F9F9F9',
 }

@@ -4,6 +4,7 @@ export interface MovieReview {
   review_rating: number
   review_date: string
   review_explanation: string
+  review_image: string
 }
 export interface MovieItem {
   movie_id: string
