@@ -8,12 +8,12 @@
         <div class="text-white text-body1 font-semibold mb-10">
           Sort Result By
         </div>
-        <SortingDropdown />
+        <SortingDropdown :selected.sync="selectedSorter" />
         <div class="text-white text-body1 font-semibold my-9">Genres</div>
         <template v-for="(cat, index) in categories">
           <div
             :key="index"
-            class="flex items-center justify-between text-white text-body2"
+            class="flex items-center justify-between text-white text-body2 mb-2"
             @click="togglerCategory(cat)"
           >
             <span>{{ cat }}</span>
@@ -41,10 +41,16 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import MovieCard from '~/components/Elements/Card/MovieCard.vue'
-import { categories, movieList, staticFilterMovieList } from '~/utils/movie'
+import {
+  categories,
+  movieList,
+  sortingDropdownData,
+  staticFilterMovieList,
+} from '~/utils/movie'
 import SortingDropdown from '~/components/Elements/Dropdown/SortingDropdown.vue'
 import { MovieItem, MovieListRequest } from '~/types/movie'
 import { APIStateType } from '~/types/fetching-api'
+import { SorterType } from '~/types/components'
 export default Vue.extend({
   name: 'BrowsePage',
   components: {
@@ -68,6 +74,7 @@ export default Vue.extend({
         isLoading: false,
         status: 'SUCCESS',
       } as APIStateType<MovieItem[]>,
+      selectedSorter: { ...sortingDropdownData[0] } as SorterType,
     }
   },
   computed: {
@@ -84,6 +91,13 @@ export default Vue.extend({
     payload: {
       handler(val: MovieListRequest) {
         this.movieListStatic.data = staticFilterMovieList(val)
+      },
+      deep: true,
+    },
+    selectedSorter: {
+      handler(val: SorterType) {
+        this.payload.sort_by = val.sort_by
+        this.payload.order_by = val.order_by
       },
       deep: true,
     },

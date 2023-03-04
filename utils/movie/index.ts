@@ -13,6 +13,7 @@ const movieList: MovieItem[] = [
     movie_views: 12400,
     movie_genres: ['Action', 'Sci-Fi'],
 
+    movie_release_date: '2022-12-01',
     movie_reviews: [
       {
         review_id: '1',
@@ -50,6 +51,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_thumbnail_url: '2-below-zero.png',
     movie_views: 5000,
     movie_genres: ['Action', 'Sci-Fi'],
+    movie_release_date: '2022-12-03',
     movie_reviews: [
       {
         review_id: '1',
@@ -87,6 +89,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 100,
     movie_genres: ['Action', 'Sci-Fi'],
 
+    movie_release_date: '2022-12-04',
     movie_reviews: [
       {
         review_id: '1',
@@ -124,6 +127,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 4000,
     movie_genres: ['Action', 'Sci-Fi'],
 
+    movie_release_date: '2022-12-05',
     movie_reviews: [
       {
         review_id: '1',
@@ -162,6 +166,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 1070,
     movie_genres: ['Action', 'Sci-Fi', 'Horror'],
 
+    movie_release_date: '2022-12-06',
     movie_reviews: [
       {
         review_id: '1',
@@ -200,6 +205,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 4500,
     movie_genres: ['Sci-Fi', 'Fantasy'],
 
+    movie_release_date: '2022-12-07',
     movie_reviews: [
       {
         review_id: '1',
@@ -238,6 +244,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 8766,
     movie_genres: ['Documentary'],
 
+    movie_release_date: '2022-12-08',
     movie_reviews: [
       {
         review_id: '1',
@@ -276,6 +283,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 450120,
     movie_genres: ['Crime'],
 
+    movie_release_date: '2022-12-09',
     movie_reviews: [
       {
         review_id: '1',
@@ -314,6 +322,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 45600,
     movie_genres: ['Drama', 'Family', 'Comedy'],
 
+    movie_release_date: '2022-12-10',
     movie_reviews: [
       {
         review_id: '1',
@@ -352,6 +361,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 31200,
     movie_genres: ['Fantasy'],
 
+    movie_release_date: '2022-12-11',
     movie_reviews: [
       {
         review_id: '1',
@@ -390,6 +400,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 5660,
     movie_genres: ['Action', 'Sci-Fi'],
 
+    movie_release_date: '2022-12-12',
     movie_reviews: [
       {
         review_id: '1',
@@ -428,6 +439,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 1990,
     movie_genres: ['Action', 'Adventure', 'Animation'],
 
+    movie_release_date: '2022-12-13',
     movie_reviews: [
       {
         review_id: '1',
@@ -469,6 +481,7 @@ const movieCarouselList: MovieItem[] = [
     movie_views: 45600,
     movie_genres: ['Drama', 'Family', 'Comedy'],
 
+    movie_release_date: '2022-12-01',
     movie_reviews: [
       {
         review_id: '1',
@@ -507,6 +520,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 31200,
     movie_genres: ['Fantasy'],
 
+    movie_release_date: '2022-12-01',
     movie_reviews: [
       {
         review_id: '1',
@@ -545,6 +559,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 5660,
     movie_genres: ['Action', 'Sci-Fi'],
 
+    movie_release_date: '2022-12-01',
     movie_reviews: [
       {
         review_id: '1',
@@ -583,6 +598,7 @@ The superhero genre has been growing exponentially during the last decade, so it
     movie_views: 1990,
     movie_genres: ['Action', 'Adventure', 'Animation'],
 
+    movie_release_date: '2022-12-01',
     movie_reviews: [
       {
         review_id: '1',
@@ -629,14 +645,14 @@ const sortingDropdownData: SorterType[] = [
   {
     id: '1',
     sort_by: 'movie_views',
-    sort_name: 'Views',
+    sort_name: 'Popularity',
     order_by: 'asc',
     title: 'Popularity Ascending',
   },
   {
     id: '2',
     sort_by: 'movie_views',
-    sort_name: 'Views',
+    sort_name: 'Popularity',
     order_by: 'desc',
     title: 'Popularity Descending',
   },
@@ -721,6 +737,7 @@ const staticFilterMovieDetail = (data: MovieDetailRequest): MovieItem => {
       movie_views: 0,
       movie_genres: [],
       movie_overview: '',
+      movie_release_date: '2022-12-01',
       movie_reviews: [
         {
           review_id: '1',

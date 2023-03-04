@@ -23,6 +23,7 @@ const state = (): MovieState => ({
       movie_budget: '',
       movie_production: '',
       movie_cover_url: '',
+      movie_release_date: '',
     },
     isLoading: false,
   },

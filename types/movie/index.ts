@@ -23,6 +23,7 @@ export interface MovieItem {
   movie_language: string
   movie_budget: string
   movie_production: string
+  movie_release_date: string
 }
 
 export interface MovieListRequest {

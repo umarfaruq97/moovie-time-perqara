@@ -22,7 +22,7 @@
           v-for="(sort, index) in sortingList"
           :key="index"
           :class="`cursor-pointer text-caption1 text-white hover:font-bold mb-2 ${
-            selected.id === sort.id ? 'font-bold' : ''
+            selected.id === sort.id ? 'font-extrabold' : ''
           }`"
           @click="handleSelect(sort)"
         >
@@ -45,25 +45,37 @@ export default Vue.extend({
     DropdownBase,
     FontIcon,
   },
+  props: {
+    selected: {
+      type: Object,
+      default: () =>
+        ({
+          id: '1',
+          sort_by: 'movie_views',
+          sort_name: 'Popularity',
+          order_by: 'asc',
+          title: 'Popularity Ascending',
+        } as SorterType),
+    },
+  },
   data() {
     return {
       open: false,
       sortingList: [...sortingDropdownData],
-      selected: sortingDropdownData[0] as SorterType,
     }
   },
   methods: {
     handleSelect(sorter: SorterType) {
       if (this.selected.id !== sorter.id) {
-        this.selected = sorter
+        this.$emit('update:selected', sorter)
       } else {
-        this.selected = {
+        this.$emit('update:selected', {
           id: '',
           sort_name: '',
           order_by: 'asc',
           sort_by: '',
           title: '',
-        }
+        })
       }
       this.open = false
     },
