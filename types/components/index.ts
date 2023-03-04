@@ -27,3 +27,11 @@ export interface MenuItem {
   icon: string
   route: string
 }
+
+export interface SorterType {
+  id: string
+  title: string
+  sort_by: string
+  order_by: 'asc' | 'desc'
+  sort_name: string
+}

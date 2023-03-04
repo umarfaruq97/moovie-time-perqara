@@ -5,7 +5,7 @@
         <slide :key="i" class="flex items-center">
           <img
             :src="
-              require(`~/assets/images/movie-thumbnail${item.movie_thumbnail_url}`)
+              require(`~/assets/images/movie-thumbnail/${item.movie_thumbnail_url}`)
             "
             width="243"
             height="364"

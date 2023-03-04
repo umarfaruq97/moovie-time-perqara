@@ -2,20 +2,18 @@ import { ActionTree } from 'vuex'
 import { MovieType } from './types'
 import MovieEnum from './enum'
 import { APIResponseType } from '~/types/fetching-api'
-import {
-  MovieDetailRequest,
-  MovieDetailResponse,
-  MovieItem,
-  MovieListRequest,
-} from '~/types/movie'
+import { MovieDetailRequest, MovieItem, MovieListRequest } from '~/types/movie'
 import { mutateHelper } from '~/utils/store'
-import { movieCarouselList, movieList } from '~/utils/movie'
+import {
+  movieCarouselList,
+  staticFilterMovieDetail,
+  staticFilterMovieList,
+} from '~/utils/movie'
 
 const actions: ActionTree<MovieType, MovieType> = {
   async getMovieList({ commit }, data: MovieListRequest) {
     try {
       const emptyState: MovieItem[] = []
-      const staticState: MovieItem[] = [...movieList]
       commit(
         MovieEnum.MOVIE_LIST_MUTATE,
         mutateHelper({ statusProcess: 'FETCHING', data: emptyState })
@@ -32,7 +30,10 @@ const actions: ActionTree<MovieType, MovieType> = {
       } else {
         commit(
           MovieEnum.MOVIE_LIST_MUTATE,
-          mutateHelper({ statusProcess: 'FAILED', data: staticState })
+          mutateHelper({
+            statusProcess: 'FAILED',
+            data: staticFilterMovieList(data),
+          })
         )
       }
       return result
@@ -50,11 +51,11 @@ const actions: ActionTree<MovieType, MovieType> = {
         MovieEnum.MOVIE_DETAIL_MUTATE,
         mutateHelper({ statusProcess: 'FETCHING', data: null })
       )
-      const result: APIResponseType<MovieDetailResponse> = await this.$axios
-        .get(`/api/movie/detail/${data.id}`)
+      const result: APIResponseType<MovieItem> = await this.$axios
+        .get(`/api/movie/detail/${data.slug}`)
         .then((res) => res.data)
         .catch((err) => err)
-      if (result.code <= 201) {
+      if (result.code === 200) {
         commit(
           MovieEnum.MOVIE_DETAIL_MUTATE,
           mutateHelper({ statusProcess: 'SUCCESS', data: result.data })
@@ -62,8 +63,12 @@ const actions: ActionTree<MovieType, MovieType> = {
       } else {
         commit(
           MovieEnum.MOVIE_DETAIL_MUTATE,
-          mutateHelper({ statusProcess: 'FAILED', data: null })
+          mutateHelper({
+            statusProcess: 'FAILED',
+            data: staticFilterMovieDetail(data),
+          })
         )
+        console.log(staticFilterMovieDetail(data))
       }
       return result
     } catch (error) {

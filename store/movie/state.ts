@@ -8,6 +8,7 @@ const state = (): MovieState => ({
   movieDetail: {
     data: {
       movie_id: '1',
+      movie_slug: '',
       movie_title: '',
       movie_year: 0,
       movie_rating: 2.1,
@@ -21,6 +22,7 @@ const state = (): MovieState => ({
       movie_language: '',
       movie_budget: '',
       movie_production: '',
+      movie_cover_url: '',
     },
     isLoading: false,
   },

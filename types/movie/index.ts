@@ -1,14 +1,3 @@
-export interface MovieItem {
-  movie_id: string
-  movie_title: string
-  movie_year: number
-  movie_rating: number
-  movie_thumbnail_url: string
-  movie_views: number
-  movie_genres: string[]
-  movie_overview: string
-}
-
 export interface MovieReview {
   review_id: string
   review_name: string
@@ -16,8 +5,17 @@ export interface MovieReview {
   review_date: string
   review_explanation: string
 }
-
-export interface MovieDetailResponse extends MovieItem {
+export interface MovieItem {
+  movie_id: string
+  movie_slug: string
+  movie_title: string
+  movie_year: number
+  movie_rating: number
+  movie_cover_url: string
+  movie_thumbnail_url: string
+  movie_views: number
+  movie_genres: string[]
+  movie_overview: string
   movie_reviews: MovieReview[]
   movie_votes: number
   movie_status: string
@@ -37,5 +35,6 @@ export interface MovieListRequest {
 }
 
 export interface MovieDetailRequest {
-  id: string
+  slug: string
+  id?: string
 }

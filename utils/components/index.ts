@@ -2,11 +2,6 @@ import { MenuItem } from '~/types/components'
 
 const headerMenu: MenuItem[] = [
   {
-    name: 'Categories',
-    icon: 'CategoryIcon',
-    route: '',
-  },
-  {
     name: 'Movies',
     icon: '',
     route: '',

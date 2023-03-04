@@ -1,9 +1,9 @@
 import { APIStateType } from '~/types/fetching-api'
-import { MovieDetailResponse, MovieItem } from '~/types/movie'
+import { MovieItem } from '~/types/movie'
 
 export interface MovieState {
   movieList: APIStateType<MovieItem[]>
-  movieDetail: APIStateType<MovieDetailResponse>
+  movieDetail: APIStateType<MovieItem>
   movieCarouselList: APIStateType<MovieItem[]>
 }
 

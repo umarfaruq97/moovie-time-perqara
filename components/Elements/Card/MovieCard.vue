@@ -11,7 +11,7 @@
         <img
           class="w-full"
           :src="
-            require(`~/assets/images/movie-thumbnail${movie.movie_thumbnail_url}`)
+            require(`~/assets/images/movie-thumbnail/${movie.movie_thumbnail_url}`)
           "
         />
         <div
@@ -34,11 +34,12 @@
         <div class="text-subheader2 font-semibold">
           {{ movie.movie_genres[0] }}
         </div>
-        <div
+        <NuxtLink
           class="px-8 py-1 text-center rounded-full bg-red-00 text-body2 font-bold uppercase"
+          :to="`/detail/${movie.movie_slug}`"
         >
           VIEW
-        </div>
+        </NuxtLink>
       </div>
     </div>
     <div class="text-cloud text-body1 font-semibold">

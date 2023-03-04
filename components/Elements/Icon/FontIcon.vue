@@ -8,6 +8,7 @@ import CategoryIcon from './Source/CategoryIcon.vue'
 import MovieIcon from './Source/MovieIcon.vue'
 import SearchIcon from './Source/SearchIcon.vue'
 import StarIcon from './Source/StarIcon.vue'
+import PolygonIcon from './Source/PolygonIcon.vue'
 export default Vue.extend({
   name: 'FontIcon',
   components: {
@@ -15,6 +16,7 @@ export default Vue.extend({
     StarIcon,
     MovieIcon,
     SearchIcon,
+    PolygonIcon,
   },
   props: {
     size: {
