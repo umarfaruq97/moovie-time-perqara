@@ -6,6 +6,14 @@
           class="w-12 h-12 rounded-full"
           :src="require(`~/assets/images/general/user-avatar.jpg`)"
         />
+        <div class="grid gap-y-1">
+          <div class="text-base2 font-bold text-dark-default">
+            {{ review.review_name }}
+          </div>
+          <div class="text-caption1 text-light-grey-03">
+            {{ review.review_date }}
+          </div>
+        </div>
       </div>
       <div class="flex space-x-2 pl-2 pr-4 py-2 bg-[#C4C4C4] rounded-lg">
         <FontIcon :name="'StarIcon'" :color="'#FFB802'" :size="17" />

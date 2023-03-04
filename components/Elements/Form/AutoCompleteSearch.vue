@@ -7,11 +7,9 @@
       </div>
       <div class="grow">
         <input
+          v-model="search"
           class="text-body1 text-cloud w-full bg-inherit focus:outline-none"
-          :value="value"
-          @input="$emit('update:value', $event.target.value)"
           @focus="showResult = true"
-          @blur="showResult = false"
         />
       </div>
       <div class="flex none">
@@ -23,9 +21,14 @@
       v-show="showResult"
       class="absolute bg-[#1A1E24] rounded-md p-5 text-cloud w-full top-8 shadow-2xl"
     >
-      <div>Wonder Woman 1984</div>
-      <div>Wonder Woman</div>
-      <div>Wonder Woman: Bloodlines</div>
+      <div
+        v-for="(item, index) in movieList"
+        :key="index"
+        class="cursor-pointer hover:font-bold"
+        @click="handleDetail($event, item)"
+      >
+        {{ item.movie_title }}
+      </div>
     </div>
   </div>
 </template>
@@ -33,27 +36,51 @@
 <script lang="ts">
 import Vue from 'vue'
 import FontIcon from '~/components/Elements/Icon/FontIcon.vue'
+import { MovieItem } from '~/types/movie'
+import { staticFilterMovieList } from '~/utils/movie'
 export default Vue.extend({
   name: 'AutoCompleteSearch',
   components: {
     FontIcon,
   },
-  props: {
-    value: {
-      type: String,
-      default: '',
-    },
-  },
   data() {
     return {
+      search: '',
       showResult: false,
+      movieList: [] as MovieItem[],
     }
   },
   watch: {
-    value(newValue: string) {
+    search(newValue: string) {
       if (newValue.length > 0) {
+        this.getList(newValue)
         this.showResult = true
       }
+    },
+  },
+
+  mounted() {
+    const self = this
+    window.addEventListener('click', function (e: MouseEvent) {
+      // close dropdown when clicked outside
+      e.stopPropagation()
+      if (!self.$el.contains(e.target as any)) {
+        self.showResult = false
+      }
+    })
+  },
+  methods: {
+    getList(search: string) {
+      this.movieList = staticFilterMovieList({
+        search,
+        order_by: 'asc',
+        sort_by: '',
+        pagination: { page: 1, limit: 6 },
+      })
+    },
+    handleDetail(e: any, item: MovieItem) {
+      e.stopPropagation()
+      this.$router.push(`/detail/${item.movie_slug}`)
     },
   },
 })

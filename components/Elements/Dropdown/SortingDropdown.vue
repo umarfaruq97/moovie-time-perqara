@@ -21,7 +21,9 @@
         <div
           v-for="(sort, index) in sortingList"
           :key="index"
-          class="cursor-pointer text-caption1 text-white hover:font-bold mb-2"
+          :class="`cursor-pointer text-caption1 text-white hover:font-bold mb-2 ${
+            selected.id === sort.id ? 'font-bold' : ''
+          }`"
           @click="handleSelect(sort)"
         >
           {{ sort.title }}
@@ -63,6 +65,7 @@ export default Vue.extend({
           title: '',
         }
       }
+      this.open = false
     },
   },
 })

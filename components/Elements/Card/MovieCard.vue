@@ -63,17 +63,7 @@ export default Vue.extend({
   props: {
     movie: {
       type: Object,
-      default: () =>
-        ({
-          movie_id: '1',
-          movie_title: 'Space Sweepers',
-          movie_year: 2021,
-          movie_rating: 7.3,
-          movie_thumbnail_url: '/1-carousel-space-sweepers.png',
-          movie_views: 12400,
-          movie_genres: ['Sci-Fi'],
-          movie_overview: `When the crew of a space junk collector ship called The Victory discovers a humanoid robot named Dorothy that's known to be a weapon of mass destruction, they get involved in a risky business deal which puts their lives at stake.`,
-        } as MovieItem),
+      default: () => ({} as MovieItem),
     },
   },
   data() {

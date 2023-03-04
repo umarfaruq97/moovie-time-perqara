@@ -20,7 +20,7 @@
             <input
               type="checkbox"
               :value="cat"
-              :checked="selectedCategories.includes(cat)"
+              :checked="payload.genres.includes(cat)"
               class="accent-red-500"
             />
           </div>
@@ -41,7 +41,7 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import MovieCard from '~/components/Elements/Card/MovieCard.vue'
-import { categories, movieList } from '~/utils/movie'
+import { categories, movieList, staticFilterMovieList } from '~/utils/movie'
 import SortingDropdown from '~/components/Elements/Dropdown/SortingDropdown.vue'
 import { MovieItem, MovieListRequest } from '~/types/movie'
 import { APIStateType } from '~/types/fetching-api'
@@ -54,11 +54,11 @@ export default Vue.extend({
   data() {
     return {
       categories: [...categories],
-      selectedCategories: this.$route.query?.genres
-        ? [this.$route.query?.genres]
-        : ([] as string[]),
       payload: {
         search: '',
+        genres: this.$route.query?.genres
+          ? [this.$route.query?.genres]
+          : ([] as string[]),
         pagination: { page: 1, limit: 12 },
         sort_by: '',
         order_by: 'asc',
@@ -77,9 +77,15 @@ export default Vue.extend({
     $route: {
       handler(val: any) {
         if (val.query?.genres) {
-          this.selectedCategories = [val.query?.genres]
+          this.payload.genres! = [val.query?.genres]
         }
       },
+    },
+    payload: {
+      handler(val: MovieListRequest) {
+        this.movieListStatic.data = staticFilterMovieList(val)
+      },
+      deep: true,
     },
   },
   async created() {
@@ -88,13 +94,13 @@ export default Vue.extend({
   methods: {
     ...mapActions('movie', ['getMovieList']),
     togglerCategory(category: string) {
-      if (this.selectedCategories.includes(category)) {
-        const index: number = this.selectedCategories.indexOf(category)
+      if (this.payload.genres!.includes(category)) {
+        const index: number = this.payload.genres!.indexOf(category)
         if (index !== -1) {
-          this.selectedCategories.splice(index, 1)
+          this.payload.genres!.splice(index, 1)
         }
       } else {
-        this.selectedCategories.push(category)
+        this.payload.genres!.push(category)
       }
     },
   },

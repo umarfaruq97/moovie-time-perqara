@@ -27,6 +27,7 @@ export interface MovieItem {
 
 export interface MovieListRequest {
   search: string
+  genres?: string[]
   sort_by: string
   order_by: 'asc' | 'desc'
   pagination: {

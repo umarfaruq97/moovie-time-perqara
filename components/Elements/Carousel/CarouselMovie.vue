@@ -3,13 +3,15 @@
     <hooper :settings="settings">
       <template v-for="(item, i) in movieCarouselListStatic.data">
         <slide :key="i" class="flex items-center">
-          <img
-            :src="
-              require(`~/assets/images/movie-thumbnail/${item.movie_thumbnail_url}`)
-            "
-            width="243"
-            height="364"
-          />
+          <NuxtLink :to="`/detail/${item.movie_slug}`">
+            <img
+              :src="
+                require(`~/assets/images/movie-thumbnail/${item.movie_thumbnail_url}`)
+              "
+              width="243"
+              height="364"
+            />
+          </NuxtLink>
           <div class="w-[300px] h-[324px] p-6 bg-black">
             <div class="grid gap-y-3">
               <div class="flex items-center space-x-2">
@@ -67,8 +69,8 @@ export default Vue.extend({
         wheelControl: false,
         keysControl: false,
         shortDrag: false,
-        autoPlay: false,
-        playSpeed: 5000,
+        autoPlay: true,
+        playSpeed: 4000,
         transition: 700,
         hoverPause: false,
       },
@@ -99,6 +101,7 @@ export default Vue.extend({
   opacity: 0.5;
   &.is-current {
     opacity: 1;
+    margin: 0 36px;
   }
 }
 .hooper-pagination {
